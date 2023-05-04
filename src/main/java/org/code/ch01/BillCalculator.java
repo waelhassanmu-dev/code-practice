@@ -1,6 +1,5 @@
 package org.code.ch01;
 
-import java.util.Scanner;
 
 public class BillCalculator {
 
@@ -35,11 +34,4 @@ public class BillCalculator {
         return MINIMUM_CHARGER + extraAmount;
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("How many gallons of water did you use this month?");
-        double usage = scanner.nextDouble();
-        System.out.println("Your water bill is " + calculateBillUsingMath(usage));
-        scanner.close();
-    }
 }
