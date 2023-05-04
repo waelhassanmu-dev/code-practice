@@ -9,7 +9,8 @@ public class BillCalculator {
     private static final double MINIMUM_GALLONS = 1496;
     private static final double CCF = 748;
 
-    public static double calculateWaterBill(double gallonsUsage) {
+    public static double calculateBill(double gallonsUsage) {
+
         if (gallonsUsage <= MINIMUM_GALLONS)
             return MINIMUM_CHARGER;
 
@@ -22,11 +23,23 @@ public class BillCalculator {
         return MINIMUM_CHARGER + (numberOfCCF * ADDITIONAL_CHARGER);
     }
 
+    public static double calculateBillUsingMath(double gallonsUsage) {
+
+        if (gallonsUsage <= MINIMUM_GALLONS)
+            return MINIMUM_CHARGER;
+
+        double additionalNumberOfGallons = gallonsUsage - MINIMUM_GALLONS;
+
+        double extraAmount = Math.ceil(additionalNumberOfGallons/CCF) * ADDITIONAL_CHARGER;
+
+        return MINIMUM_CHARGER + extraAmount;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("How many gallons of water did you use this month?");
         double usage = scanner.nextDouble();
-        System.out.println("Your water bill is " + calculateWaterBill(usage));
+        System.out.println("Your water bill is " + calculateBillUsingMath(usage));
         scanner.close();
     }
 }
