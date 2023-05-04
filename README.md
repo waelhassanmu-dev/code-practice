@@ -1,4 +1,4 @@
-# Code Practice & Challenges
+# Code Practice
 
 This repository contains Java code for practicing and refreshing Java programming skills.
 
