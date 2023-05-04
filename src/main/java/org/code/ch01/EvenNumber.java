@@ -9,4 +9,8 @@ public class EvenNumber {
         return n % 2 == 0;
     }
 
+    public static boolean isEvenBitwise(int n) {
+        return (n & 1) == 0;
+    }
+
 }
