@@ -31,5 +31,29 @@ public class PasswordPatternTest {
         assertFalse(isPasswordComplex("Sur18"));
         assertFalse(isPasswordComplex(""));
     }
+
+    /**
+     * Method under test: {@link PasswordPattern#isPasswordComplexDeclarative(String)}
+     */
+
+    @Test
+    public void isPasswordComplexDeclarative_true() {
+        assertTrue(isPasswordComplexDeclarative("Happy12"));
+        assertTrue(isPasswordComplexDeclarative("1WaeL ength"));
+        assertTrue(isPasswordComplexDeclarative("Password12"));
+        assertTrue(isPasswordComplexDeclarative("2PassW@ord1"));
+        assertTrue(isPasswordComplexDeclarative("01Sall#y9"));
+    }
+
+    @Test
+    public void isPasswordComplexDeclarative_false() {
+        assertFalse(isPasswordComplexDeclarative("12aB "));
+        assertFalse(isPasswordComplexDeclarative("Ab112"));
+        assertFalse(isPasswordComplexDeclarative("happy"));
+        assertFalse(isPasswordComplexDeclarative("happy_1"));
+        assertFalse(isPasswordComplexDeclarative("p assword12"));
+        assertFalse(isPasswordComplexDeclarative("Sur18"));
+        assertFalse(isPasswordComplexDeclarative(""));
+    }
 }
 

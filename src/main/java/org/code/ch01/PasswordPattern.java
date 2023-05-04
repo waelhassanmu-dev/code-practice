@@ -15,4 +15,26 @@ public class PasswordPattern {
         return PATTERN.matcher(password).matches();
     }
 
+    public static boolean isPasswordComplexDeclarative(String password) {
+
+        if (password.length() < 6)
+            return false;
+
+        boolean hasNumber = false;
+        boolean hasUpperCaseCharacter = false;
+        boolean hasLowerCaseCharacter = false;
+
+        for (int i = 0; i < password.length() || (!hasNumber && !hasUpperCaseCharacter && !hasLowerCaseCharacter); i++) {
+            char c = password.charAt(i);
+            if (Character.isDigit(c))
+                hasNumber = true;
+            else if (Character.isUpperCase(c))
+                hasUpperCaseCharacter = true;
+            else if (Character.isLowerCase(c))
+                hasLowerCaseCharacter = true;
+        }
+
+        return hasNumber && hasUpperCaseCharacter && hasLowerCaseCharacter;
+    }
+
 }
