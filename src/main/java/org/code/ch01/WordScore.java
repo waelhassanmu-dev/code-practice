@@ -1,6 +1,8 @@
 package org.code.ch01;
 
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class WordScore {
 
     private WordScore() {
@@ -22,6 +24,20 @@ public class WordScore {
             score = score + point;
         }
         return score;
+    }
+
+    public static int wordScoreCalculatorV2(String word) {
+        AtomicInteger score = new AtomicInteger(); // because we're using lambda and its using multi threading
+        word.toUpperCase().chars()
+                .filter(Character::isAlphabetic)
+                .mapToObj(c -> (char) c)
+                .forEach(letter -> {
+                    if (letterPoints.containsKey(letter)) {
+                        score.addAndGet(letterPoints.get(letter));
+                    } else
+                        System.out.println("looks like we need to add + " + letter + " to letter points map");
+                });
+        return score.get();
     }
 
 }
